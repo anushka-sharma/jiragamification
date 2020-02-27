@@ -2,7 +2,7 @@ def call(json){
 def jsonString = json
 def jsonObj = readJSON text: jsonString
 
-String b=jsonObj.alm.projects.project.project_typeKey
+String b=jsonObj.alm.projects.project.project_name
 String Key=b.replaceAll("\\[", "").replaceAll("\\]","");
 /* String c=jsonObj.alm.projects.project.project_typeKey 
 String Key=c.replaceAll("\\[", "").replaceAll("\\]","");

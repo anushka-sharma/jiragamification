@@ -11,7 +11,7 @@ String Key=d.replaceAll("\\[", "").replaceAll("\\]","");*/
 println(Key)
 
 //collecting all issues with status Done in a project
-// sh '''curl -X GET -i -H  -d  -u rig:digitalrig@123 http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D${Key}%20AND%20(status%3DDONE)'''
+ sh '''curl -X GET -i -H  -d  -u rig:digitalrig@123 http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D${Key}%20AND%20status%3DDONE'''
 //collecting all issues with status To-do in a project
   //sh '''curl -X GET -i -H  -d  -u rig:digitalrig@123 http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D'${Key}'%20AND%20(status%3D"To%20Do")'''
 //collecting all issues with status In-Progress in a project

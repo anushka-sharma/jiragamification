@@ -5,9 +5,10 @@ stages{
   stage('Collect Issue Summary'){
             steps {
                 script{
-                 jiraCollector.done()
-                 jiraCollector.inprogress()
-                 jiraCollector.todo()
+                 jiraCollector()
+                 //jiraCollector.done()
+                 //jiraCollector.inprogress()
+                 //jiraCollector.todo()
                
                 }
             }

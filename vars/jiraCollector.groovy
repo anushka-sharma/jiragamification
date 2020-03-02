@@ -23,7 +23,45 @@ sh """
 }
 
 
+def jsonSlurper = new JsonSlurper()
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/output.json"))
+def total = resultJson.size
+ echo "Total no.of tasks with status "In-Progeress" are ${projectName} $total"
+//def commiter=1
+List<String> JSON = new ArrayList<String>();
+List<String> JCOPY = new ArrayList<String>();
+/*
+//Map<ImmutableList<String>, List<String>> map = new HashMap<ImmutableList<String>, List<String>>();
+for(i=0;i<ecount;i++)
+{	 
+  for(j=0;j<total;j++)
+  {
+ if(jsonObj.config.emails.email[i]==resultJson.values.author[j].emailAddress)
+	     {
+	JSON.add(resultJson.values[j])
+	//println(JSON) 
+    
+		     
+    }
+      
+  
+      }
+  */
+	 def count=JSON.size()
+	 //println(jsonObj.config.emails.email[i])
+	 JCOPY[i]=(JsonOutput.toJson(JSON))
+	 map.put(ImmutableList.of(jsonObj.config.emails.email[i],count),JCOPY[i])
+	
+	
+	 JSON.clear()
+	 
 
+	  
+//}
+println(JCOPY)
+
+
+/*
 
 def done(jsondata){
 def jsonString = jsondata
@@ -103,3 +141,4 @@ String Key=d.replaceAll("\\[", "").replaceAll("\\]","");*/
 
 //}
 
+*/

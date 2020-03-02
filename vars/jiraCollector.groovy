@@ -127,7 +127,7 @@ echo "Total no.of issues in $projectName with statuts to-do are $total"
 
 
 
-*/
+
 //def call(json){
 //def jsonString = json
 //def jsonObj = readJSON text: jsonString

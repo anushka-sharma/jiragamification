@@ -1,4 +1,4 @@
-import groovy.json.* 
+//import groovy.json.* 
 import jenkins.model.Jenkins
 import hudson.model.User
 import hudson.security.Permission
@@ -6,10 +6,10 @@ import hudson.EnvVars
 
 EnvVars envVars = build.getEnvironment(listener);
 
-filename = envVars.get('WORKSPACE') + "\\output.json";
-//filename = "${manager.build.workspace.remote}" + "\\output.json"
-targetFile = new File(output);
-println "attempting to create file: $output"
+filename = envVars.get('WORKSPACE') + "/node_details.txt";
+//filename = "${manager.build.workspace.remote}" + "\\node_details.txt"
+targetFile = new File(filename);
+println "attempting to create file: $targetFile"
 
 if (targetFile.createNewFile()) {
     println "Successfully created file $targetFile"

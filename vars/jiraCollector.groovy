@@ -19,16 +19,13 @@ sh """
   -H 'cache-control: no-cache' -o "output.json"
   """
   }   
+
 def jsonSlurper = new JsonSlurper()
-def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/jira/output.json"),"UTF-8"))
-def resultJson = jsonSlurper.parse(reader)
-	
-}
-/*def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/result.json"))
 def total = resultJson.size
-echo "Total no.of commits in $repoName $total"
-*/
+//echo "Total no.of commits in $repoName $total"
+}
+
 	/*
 
 def jsonSlurper = new JsonSlurper()

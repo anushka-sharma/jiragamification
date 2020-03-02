@@ -20,7 +20,7 @@ sh """
   """
    
   }
-}
+//}
 
 
 def jsonSlurper = new JsonSlurper()
@@ -30,8 +30,8 @@ def total = resultJson.size
 //def commiter=1
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
-
-//Map<ImmutableList<String>, List<String>> map = new HashMap<ImmutableList<String>, List<String>>();
+/*
+Map<ImmutableList<String>, List<String>> map = new HashMap<ImmutableList<String>, List<String>>();
 for(i=0;i<ecount;i++)
 {	 
   for(j=0;j<total;j++)
@@ -40,13 +40,10 @@ for(i=0;i<ecount;i++)
 	     {
 	JSON.add(resultJson.values[j])
 	//println(JSON) 
-    
-		     
-    }
-      
-  
-      }
-  
+              }
+  }
+ } 
+  */
 	 def count=JSON.size()
 	 //println(jsonObj.config.emails.email[i])
 	 JCOPY[i]=(JsonOutput.toJson(JSON))

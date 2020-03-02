@@ -18,11 +18,11 @@ sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D${projectName}%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
-  -H 'cache-control: no-cache' -o output.json
+  -H 'cache-control: no-cache' -o outputInProgress.json
   """
  }   
 def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/output.json"))
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgress.json"))
 def total = resultJson.total
 echo "Total no.of issues in $projectName with statuts in-progress are $total"
 

@@ -24,8 +24,8 @@ sh """
 
 
 def jsonSlurper = new JsonSlurper()
-//def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))
-def resultJson = jsonSlurper.parse(readFile("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))	
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))
+//def resultJson = jsonSlurper.parse(readFile("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))	
 def total = resultJson.size
  echo "Total no.of tasks with status "In-Progeress" are ${projectName} $total"
 //def commiter=1

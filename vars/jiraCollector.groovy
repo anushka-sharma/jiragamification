@@ -1,8 +1,8 @@
 import groovy.json.* 
 
-	def inprogress(jsondata){
+def inprogress(jsondata){
 def jsonString = jsondata
-def workspace = build.getEnvVars()["jiraCollector"]
+//def workspace = build.getEnvVars()["jiraCollector"]
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
 println(jsonObj.alm)

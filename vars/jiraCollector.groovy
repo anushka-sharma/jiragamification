@@ -66,7 +66,7 @@ for(i=0;i<ecount;i++)
 println(JCOPY)
 */
 
-/*
+
 def done(jsondata){
 def jsonString = jsondata
 //println(jsonString)
@@ -89,8 +89,12 @@ sh """
   }
 }
 
+def jsonSlurper = new JsonSlurper()
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputdone.json"))
+def total = resultJson.total
+echo "Total no.of issues in $projectName with statuts done are $total"
 
-
+/*
 def todo(jsondata){
 def jsonString = jsondata
 //println(jsonString)

@@ -11,30 +11,23 @@ String a=jsonObj.alm.projects.project.project_name
 String projectName=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = projectName
-
-  withCredentials([usernamePassword(credentialsId: 'jira_password', passwordVariable: 'password', usernameVariable:'username')])
-{
+withCredentials([usernamePassword(credentialsId: 'jira_password', passwordVariable: 'password', usernameVariable:'username')])
+  {
 sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D${projectName}%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
   -H 'cache-control: no-cache' -o outputInProgress.json
   """
- }   
+  }   
 def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgress.json"))
 def total = resultJson.total
 echo "Total no.of issues in $projectName with statuts in-progress are $total"
-
 }
 
-/*
 
-def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))
-//def resultJson = jsonSlurper.parse(readFile("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))	
-def total = resultJson.size
- echo "Total no.of tasks with status "In-Progeress" are ${projectName} $total"
+/*
 //def commiter=1
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
@@ -51,7 +44,7 @@ for(i=0;i<ecount;i++)
               }
   }
  } 
-  
+ 
 def count=JSON.size()
 println(jsonObj.config.emails.email[i])
 JCOPY[i]=(JsonOutput.toJson(JSON))
@@ -61,7 +54,9 @@ map.put(ImmutableList.of(jsonObj.config.emails.email[i],count),JCOPY[i])
 JSON.clear()
 }
 println(JCOPY)
+
 */
+
 
 
 def done(jsondata){

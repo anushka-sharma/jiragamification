@@ -2,6 +2,7 @@ import groovy.json.*
 
 def inprogress(jsondata){
 def jsonString = jsondata
+def workspace = build.getEnvVars()["WORKSPACE"]
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
 println(jsonObj.alm)

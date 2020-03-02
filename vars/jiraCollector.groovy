@@ -21,9 +21,10 @@ sh """
   -H 'cache-control: no-cache' -o output.json
   """
  }   
-
-
-//echo "Total no.of commits in $repoName $total"
+def jsonSlurper = new JsonSlurper()
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/output.json"))
+def total = output.size
+echo "Total no.of commits in $total"
 
 }
 	/*

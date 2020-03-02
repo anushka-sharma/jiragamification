@@ -21,7 +21,7 @@ sh """
    
   }
 }
-
+/*
 
 def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/Output.json"))
@@ -58,7 +58,7 @@ for(i=0;i<ecount;i++)
 	  
 //}
 println(JCOPY)
-
+*/
 
 /*
 def done(jsondata){

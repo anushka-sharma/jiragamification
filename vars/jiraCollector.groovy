@@ -1,6 +1,6 @@
 import groovy.json.* 
 
-def inprogress(jsondata)
+	def inprogress(jsondata){
 def jsonString = jsondata
 def workspace = build.getEnvVars()["jiraCollector"]
 //println(jsonString)
@@ -27,7 +27,7 @@ def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NA
 def total = output.size
 //echo "Total no.of commits in $repoName $total"
 
-
+}
 	/*
 
 def jsonSlurper = new JsonSlurper()

@@ -23,7 +23,7 @@ sh """
  }   
 def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/output.json"))
-def total = output.size
+def total = resultJson.size
 echo "Total no.of commits in $total"
 
 }

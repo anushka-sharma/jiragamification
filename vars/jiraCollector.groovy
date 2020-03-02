@@ -94,7 +94,8 @@ def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NA
 def total = resultJson.total
 echo "Total no.of issues in $projectName with statuts done are $total"
 }
-/*
+
+
 def todo(jsondata){
 def jsonString = jsondata
 //println(jsonString)
@@ -111,10 +112,16 @@ sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=project%3D${projectName}%20AND%20(status%3D'\'"To%20Do"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
-  -H 'cache-control: no-cache' 
+  -H 'cache-control: no-cache' -o outputToDo.json
   """
    
   }
+
+def jsonSlurper = new JsonSlurper()
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputToDo.json"))
+def total = resultJson.total
+echo "Total no.of issues in $projectName with statuts to-do are $total"	
+	
 }
 
 

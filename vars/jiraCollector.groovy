@@ -61,6 +61,7 @@ for(i=0;i<ecount;i++)
 println(JCOPY)
 */
 
+/*
 def done(jsondata){
 def jsonString = jsondata
 //println(jsonString)
@@ -110,7 +111,7 @@ sh """
 
 
 
-
+*/
 //def call(json){
 //def jsonString = json
 //def jsonObj = readJSON text: jsonString

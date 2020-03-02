@@ -1,5 +1,25 @@
 import groovy.json.* 
-  
+import jenkins.model.Jenkins
+import hudson.model.User
+import hudson.security.Permission
+import hudson.EnvVars
+
+EnvVars envVars = build.getEnvironment(listener);
+
+filename = envVars.get('WORKSPACE') + "\\output.json";
+//filename = "${manager.build.workspace.remote}" + "\\output.json"
+targetFile = new File(output);
+println "attempting to create file: $output"
+
+if (targetFile.createNewFile()) {
+    println "Successfully created file $targetFile"
+} else {
+    println "Failed to create file $targetFile"
+}
+print "Deleting ${targetFile.getAbsolutePath()} : "
+println targetFile.delete()
+
+/*
 def inprogress(jsondata){
 def jsonString = jsondata
 //println(jsonString)
@@ -45,6 +65,7 @@ for(i=0;i<ecount;i++)
   }
  } 
   */
+/*
 	 def count=JSON.size()
 	 //println(jsonObj.config.emails.email[i])
 	 JCOPY[i]=(JsonOutput.toJson(JSON))
@@ -58,7 +79,7 @@ for(i=0;i<ecount;i++)
 //}
 println(JCOPY)
 
-
+*/
 /*
 def done(jsondata){
 def jsonString = jsondata

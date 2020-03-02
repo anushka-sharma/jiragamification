@@ -137,3 +137,4 @@ sh """
 //  sh "curl -X GET -i -H  -d  -u rig:digitalrig@123 http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${emailid/username}'%20AND%20(status%3D"In%20Progress") "
 
 //}
+}

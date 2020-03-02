@@ -30,7 +30,7 @@ def total = resultJson.size
 //def commiter=1
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
-/*
+
 //Map<ImmutableList<String>, List<String>> map = new HashMap<ImmutableList<String>, List<String>>();
 for(i=0;i<ecount;i++)
 {	 
@@ -46,7 +46,7 @@ for(i=0;i<ecount;i++)
       
   
       }
-  */
+  
 	 def count=JSON.size()
 	 //println(jsonObj.config.emails.email[i])
 	 JCOPY[i]=(JsonOutput.toJson(JSON))
@@ -60,7 +60,7 @@ for(i=0;i<ecount;i++)
 //}
 println(JCOPY)
 
-
+*/
 /*
 
 def done(jsondata){

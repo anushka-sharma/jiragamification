@@ -2,10 +2,11 @@ import groovy.json.*
 
 def inprogress(jsondata){
 def jsonString = jsondata
-//def workspace = build.getEnvVars()["jiraCollector"]
-//println(jsonString)
 def jsonObj = readJSON text: jsonString
-println(jsonObj.config)
+	
+int ecount = jsonObj.config.emails.email.size()	
+println("No of users "+ ecount)	
+//println(jsonObj.config)
 
 String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
@@ -20,12 +21,26 @@ sh """
   -H 'cache-control: no-cache' -o outputInProgress.json
   """
   }   
+	
 def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgress.json"))
 def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts in-progress are $total"
+	
+List<String> JSON = new ArrayList<String>();
+
+for(i=0;i<ecount;i++)
+ {
+  for(j=0;j<total;j++)
+  {
+   if(jsonObj.config.emails.email[i]==resultJson[j].author_email)
+   {
+	   JSON.add(JsonOutput.toJson(resultJson[j]))	
 
 }
+  }
+ }
+println(JSON)
 	
 	
 /*	

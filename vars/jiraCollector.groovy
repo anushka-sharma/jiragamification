@@ -25,7 +25,7 @@ def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NA
 def total = resultJson.total
 echo "Total no.of issues in $projectName with statuts in-progress are $total"
 
-
+}
 	
 	
 /*	

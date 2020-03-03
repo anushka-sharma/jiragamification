@@ -154,3 +154,4 @@ def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts to-do are $total"	
 	
 }
+}

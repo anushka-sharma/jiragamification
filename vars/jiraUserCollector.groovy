@@ -42,7 +42,7 @@ for(i=0;i<ecount;i++)
  }
 println(JSON)
 	
-	
+}	
 /*	
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
@@ -154,4 +154,4 @@ def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts to-do are $total"	
 	
 }
-}
+

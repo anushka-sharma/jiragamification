@@ -7,7 +7,7 @@ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
 println(jsonObj.alm)
 
-String a=jsonObj.alm.projects.project.email
+String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail
@@ -88,7 +88,7 @@ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
 println(jsonObj.alm)
 
-String a=jsonObj.alm.projects.project.email
+String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail
@@ -118,7 +118,7 @@ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
 println(jsonObj.alm)
 
-String a=jsonObj.alm.projects.project.email
+String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail

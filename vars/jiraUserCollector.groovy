@@ -18,12 +18,12 @@ sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
-  -H 'cache-control: no-cache' -o outputInProgress.json
+  -H 'cache-control: no-cache' -o outputInProgressUser.json
   """
   }   
 	
 def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgress.json"))
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgressUser.json"))
 def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts in-progress are $total"
 	
@@ -113,14 +113,14 @@ sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3DDONE)%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
-  -H 'cache-control: no-cache' -o outputdone.json
+  -H 'cache-control: no-cache' -o outputDoneUser.json
   """
    
   }
 
 
 def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputdone.json"))
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputDoneUser.json"))
 def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts done are $total"
 }
@@ -143,13 +143,13 @@ sh """
      curl -X GET \
     -H -d -u $username:$password \
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"To%20Do"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
-  -H 'cache-control: no-cache' -o outputToDo.json
+  -H 'cache-control: no-cache' -o outputToDoUser.json
   """
    
   }
 
 def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputToDo.json"))
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputToDoUser.json"))
 def total = resultJson.total
 echo "Total no.of issues of user $eMail with statuts to-do are $total"	
 	

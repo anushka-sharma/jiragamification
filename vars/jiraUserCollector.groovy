@@ -5,9 +5,9 @@ def jsonString = jsondata
 //def workspace = build.getEnvVars()["jiraCollector"]
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
-println(jsonObj.alm)
+println(jsonObj.config)
 
-String a=jsonObj.emails.email
+String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail
@@ -86,7 +86,7 @@ def done(jsondata){
 def jsonString = jsondata
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
-println(jsonObj.alm)
+println(jsonObj.config)
 
 String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
@@ -116,7 +116,7 @@ def todo(jsondata){
 def jsonString = jsondata
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
-println(jsonObj.alm)
+println(jsonObj.config)
 
 String a=jsonObj.config.emails.email
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");

@@ -21,7 +21,7 @@ sh """
   -H 'cache-control: no-cache' -o outputInProgressUser.json
   """
   }   
-	
+/*		
 def jsonSlurper = new JsonSlurper()
 def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgressUser.json"))
 def total = resultJson.total
@@ -43,7 +43,7 @@ for(i=0;i<ecount;i++)
 println(JSON)
 	
 }	
-/*	
+	
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
 List<String> JSON1= new ArrayList<String>();

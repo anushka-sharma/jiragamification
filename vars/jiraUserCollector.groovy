@@ -102,6 +102,7 @@ def jsonString = jsondata
 //println(jsonString)
 def jsonObj = readJSON text: jsonString
 println(jsonObj.config)
+println(jsonObj.config.emails.email.size())
 for(i=0;i<jsonObj.config.emails.email.size();i++)
 	{
 String a=jsonObj.config.emails.email[i]

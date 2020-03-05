@@ -103,7 +103,7 @@ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
 println(jsonObj.config)
 
-String a=jsonObj.config.emails.email
+String a=jsonObj.config.emails.email[1]
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail

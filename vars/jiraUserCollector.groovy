@@ -1,10 +1,16 @@
 import groovy.json.* 
 
 def inprogress(jsondata){
+//defining function and parameters
 def jsonString = jsondata
+//Storing parameters into an variable
 def jsonObj = readJSON text: jsonString
+//readJSON - how to read key elements as a list
+//text:  differentiate between plain text file and json file upon file read
+
 	
 int ecount = jsonObj.config.emails.email.size()	
+//Groovy - size() Obtains the number of elements in this List.
 println("No of users "+ ecount)	
 //println(jsonObj.config)
 

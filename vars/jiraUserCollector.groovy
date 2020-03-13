@@ -45,7 +45,7 @@ echo "Total no.of issues of user $eMail with statuts done are $total"
 
 }
 
-
+/*
 def done(jsondata){
 def jsonString = jsondata
 //println(jsonString)
@@ -107,3 +107,4 @@ echo "Total no.of issues of user $eMail with statuts to-do are $total"
 }
 
 
+*/

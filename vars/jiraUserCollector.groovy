@@ -18,7 +18,7 @@ for(i=0;i<jsonObj.config.emails.email.size();i++)
 //println("No of users "+ ecount)	
 //println(jsonObj.config)
 
-String a=jsonObj.config.emails.email
+String a=jsonObj.config.emails.email[i]
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail
@@ -27,7 +27,7 @@ withCredentials([usernamePassword(credentialsId: 'jira_password', passwordVariab
 sh """
      curl -X GET \
     -H -d -u $username:$password \
-     'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
+     'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail[i]}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
    -H 'cache-control: no-cache' -o outputInProgressUser.json
   """
   }

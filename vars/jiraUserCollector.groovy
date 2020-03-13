@@ -23,36 +23,23 @@ withCredentials([usernamePassword(credentialsId: 'jira_password', passwordVariab
 sh """
      curl -X GET \
     -H -d -u $username:$password \
-     'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
+     // added %2Casignee to get assignee details with email adress
+     'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority%2Cassignee' \
   -H 'cache-control: no-cache' -o outputInProgressUser.json
   """
   }   
-/*		
-def jsonSlurper = new JsonSlurper()
-def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputInProgressUser.json"))
-def total = resultJson.total
-echo "Total no.of issues of user $eMail with statuts in-progress are $total"
-	
-List<String> JSON = new ArrayList<String>();
 
-for(i=0;i<ecount;i++)
- {
-  for(j=0;j<total;j++)
-  {
-   if(jsonObj.config.emails.email[i]==resultJson[j].author_email)
-   {
-	   JSON.add(JsonOutput.toJson(resultJson[j]))	
+	
+	
+/*	
 
-}
-  }
- }
-println(JSON)
-	
-}	
-	
+//File file = new File(output.json)
+//file.write(total)
+//def commiter=1
 List<String> JSON = new ArrayList<String>();
 List<String> JCOPY = new ArrayList<String>();
-List<String> JSON1= new ArrayList<String>();
+//List<String> jsonStringa = new ArrayList<String>();
+
 for(i=0;i<ecount;i++)
 {	 
   for(j=0;j<total;j++)
@@ -60,44 +47,48 @@ for(i=0;i<ecount;i++)
  if(jsonObj.config.emails.email[i]==resultJson.values.author[j].emailAddress)
 	     {
 	JSON.add(resultJson.values[j])
-	//println(JSON) 
-     
-		     
-    }
-	
-      
-  
-      }
-	 
-	
-	 count=JSON.size()
-	 //  println(USER)
-         	
- JSON1[i]=JSON.clone()
-	   JCOPY.add(["Email":jsonObj.config.emails.email[i],"Individual_commit":JSON1[i],"Commit_count":count])
-	
-	 
-	
+	 }
+ }
+   count=JSON.size()
+    JCOPY.add(["email":jsonObj.config.emails.email[i],"Individual_commit":JsonOutput.toJson(JSON),"Commit_count":count])
 	
 	 JSON.clear()
-	 
+	
 	  
 }
+//for(i=0;i<jsonStringa.size();i++)
+//  { 
+//    int score=0
+//if(jsonStringa[i].contains("jsonObj.config.emails.email[i]"))
+    {
+//def jsonObja = readJSON text: jsonStringa[i]
+//int total=jsonObja.bitbucket.Commit_count 
+//  if(total>5)
+//  {
+//    score=score+10
+//  }
+//  }
+
+ def list = JCOPY.sort()
+
 def jsonBuilder = new groovy.json.JsonBuilder()
+
 jsonBuilder.bitbucket(
-  "Total_commits": resultJson.values,
- "Commit_count": resultJson.size(),
- "Individual_commits":JCOPY
+  "total_commit": resultJson,
+ "commit_count": resultJson.size,
+	"individual":JCOPY
 )
-File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/commits1.json")
-file.write(jsonBuilder.toPrettyString())	
-//def result = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/commits1.json"))
-//def commits = result.bitbucket.Commit_count
-//println(commits)
+
+File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/commits.json")
+file.write(jsonBuilder.toPrettyString())
+	//println(list)
+//def copyAndReplaceText(source, dest, targetText, replaceText){
+   // file.write(jsonBuilder.toPrettyString())
 }
+	
+	
+
 */
-
-
 
 
 }

@@ -14,7 +14,7 @@ int ecount = jsonObj.config.emails.email.size()
 println("No of users "+ ecount)	
 //println(jsonObj.config)
 
-String a=jsonObj.config.emails.email
+String a=jsonObj.config.emails.email[i]
 String eMail=a.replaceAll("\\[", "").replaceAll("\\]","");
   
 env.name = eMail

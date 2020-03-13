@@ -8,10 +8,14 @@ def jsonObj = readJSON text: jsonString
 //readJSON - how to read key elements as a list
 //text:  differentiate between plain text file and json file upon file read
 
+println(jsonObj.config)
+println(jsonObj.config.emails.email.size())
+for(i=0;i<jsonObj.config.emails.email.size();i++)
+{
 	
-int ecount = jsonObj.config.emails.email.size()	
+//int ecount = jsonObj.config.emails.email.size()	
 //Groovy - size() Obtains the number of elements in this List.
-println("No of users "+ ecount)	
+//println("No of users "+ ecount)	
 //println(jsonObj.config)
 
 String a=jsonObj.config.emails.email
@@ -26,7 +30,13 @@ sh """
      'http://ec2-18-191-16-16.us-east-2.compute.amazonaws.com:8080/rest/api/2/search?jql=assignee='${eMail}'%20AND%20(status%3D'\'"In%20Progress"\'')%20order%20by%20duedate&fields=id%2Ckey%2Cpriority' \
    -H 'cache-control: no-cache' -o outputInProgressUser.json
   """
-  }   
+  }
+	
+def jsonSlurper = new JsonSlurper()
+def resultJson = jsonSlurper.parse(new File("/var/lib/jenkins/workspace/${JOB_NAME}/outputDoneUser.json"))
+def total = resultJson.total
+echo "Total no.of issues of user $eMail with statuts done are $total"
+}	
 
 	
 	
